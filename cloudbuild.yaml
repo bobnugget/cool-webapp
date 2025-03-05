@@ -1,4 +1,4 @@
-# Be sure to set up the $_REPO and $_SERVICE_NAME variables
+# Be sure to set up the $_PORT, $_REPO and $_SERVICE_NAME variables
 
 steps:
 - name: gcr.io/cloud-builders/docker
@@ -14,6 +14,9 @@ steps:
     - '$LOCATION-docker.pkg.dev/$PROJECT_ID/$_REPO/$_SERVICE_NAME:$COMMIT_SHA'
     - '--region'
     - $LOCATION
+    - '--port'
+    - '$_PORT'
+    - '--allow-unauthenticated'
   entrypoint: gcloud
 timeout: 1200s
 images:
