@@ -1,4 +1,8 @@
 # Be sure to set up the $_PORT, $_REPO and $_SERVICE_NAME variables
+# when configuring the Cloud Build Trigger
+#
+# Also, be sure the service account in Cloud Build has the "Cloud Functions Admin" role
+# in order to set the service as "unauthenticated" when deploying
 
 steps:
 - name: gcr.io/cloud-builders/docker
@@ -23,4 +27,3 @@ images:
   - '$LOCATION-docker.pkg.dev/$PROJECT_ID/$_REPO/$_SERVICE_NAME:$COMMIT_SHA'
 options:
   logging: CLOUD_LOGGING_ONLY
-# defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
